@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,9 +47,10 @@ public class UsuarioService {
     public UsuarioDTO criarUsuario(UsuarioInputDTO usuarioInput) {
         Usuario usuarioExistente = usuarioRepository.findByEmail(usuarioInput.getEmail());
 
-        Usuario usuario = toEntity(usuarioInput);
-
         if(usuarioExistente != null) throw new AlreadyExistsException("Já existe um cadastro com este email.");
+
+        Usuario usuario = toEntity(usuarioInput);
+        usuario.setDataCriacao(OffsetDateTime.now());
 
         return toMap(usuarioRepository.save(usuario));
     }
@@ -57,6 +59,7 @@ public class UsuarioService {
         if(usuarioRepository.existsById(id)) {
             Usuario usuario = toEntity(usuarioInput);
             usuario.setId(id);
+            usuario.setDataAtualizacao(OffsetDateTime.now());
 
             return ResponseEntity.ok(toMap(usuarioRepository.save(usuario)));
         }
