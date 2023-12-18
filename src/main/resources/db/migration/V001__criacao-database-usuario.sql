@@ -1,5 +1,3 @@
-CREATE DATABASE docker;
-
 USE docker;
 
 CREATE TABLE USER (
