@@ -1,6 +1,8 @@
 package com.estudos.docker.api.dto;
 
+import com.estudos.docker.domain.enumerator.TipoUsuario;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -18,5 +20,8 @@ public class UsuarioInputDTO {
     @NotBlank
     @Size(min = 8, max = 20)
     private String senha;
+
+    @NotNull
+    private TipoUsuario tipo;
 
 }

@@ -3,6 +3,7 @@ package com.estudos.docker.domain.model;
 import com.estudos.docker.domain.enumerator.TipoUsuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,7 +37,8 @@ public class Usuario {
     @Column(name = "USER_PASSWORD")
     private String senha;
 
-    @NotBlank
+    @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(name = "USER_TIPO")
     private TipoUsuario tipo;
 

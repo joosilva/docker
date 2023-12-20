@@ -38,8 +38,7 @@ public class UsuarioService {
         return usuarioList.stream().map(this::toMap).collect(Collectors.toList());
     }
 
-    public List<UsuarioDTO> listarDigimons() {
-
+    public List<UsuarioDTO> listarUsuarios() {
 
         return toMapList(usuarioRepository.findAll());
     }

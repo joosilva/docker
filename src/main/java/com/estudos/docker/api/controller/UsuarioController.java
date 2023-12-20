@@ -21,12 +21,12 @@ public class UsuarioController {
     @GetMapping
     public List<UsuarioDTO> listarUsuarios() {
 
-        return usuarioService.listarDigimons();
+        return usuarioService.listarUsuarios();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UsuarioDTO criarUsuario(UsuarioInputDTO usuarioInput) {
+    public UsuarioDTO criarUsuario(@Valid @RequestBody UsuarioInputDTO usuarioInput) {
 
         return usuarioService.criarUsuario(usuarioInput);
     }
