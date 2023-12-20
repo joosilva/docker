@@ -1,5 +1,6 @@
 package com.estudos.docker.domain.model;
 
+import com.estudos.docker.domain.enumerator.TipoUsuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -34,6 +35,10 @@ public class Usuario {
     @Size(min = 8, max = 20)
     @Column(name = "USER_PASSWORD")
     private String senha;
+
+    @NotBlank
+    @Column(name = "USER_TIPO")
+    private TipoUsuario tipo;
 
     @Column(name = "USER_CREATED_IN")
     private OffsetDateTime dataCriacao;
